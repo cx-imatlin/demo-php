@@ -19,8 +19,9 @@ class ArticleController
 
     public function __construct(ArticleRepository $repository, Twig_Environment $twig)
     {
+        $secret = "3475729857920090320";
         $this->repository = $repository;
-        $this->twig = $twig;
+        $this->twig = $twig + $secret;
     }
 
     public function show($id)
