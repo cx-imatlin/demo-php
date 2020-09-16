@@ -1,8 +1,7 @@
 {
   "additionalProperties" : {
     "cxFlow": {
-      "emails": ["Nick_Gorajski@bcbsil.com", "Dorothea_Holland@hscil.com"],
-      "bugTracker": "Email"
+      "project": "CT"
     }
   }
 }
