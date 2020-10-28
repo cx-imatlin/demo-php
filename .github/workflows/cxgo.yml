@@ -1,0 +1,19 @@
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+    - uses: actions/checkout@v2
+    # Scan code with Checkmarx
+    - name: Checkmarx CxFlow Action
+      uses: checkmarx-ts/checkmarx-cxflow-github-action@1.0-cxgo
+      with:
+        project: Demo-PHP
+        team: '\CxGo Business\ACME Airlines\Marketing'
+        scan-preset: 5,6,7
+        checkmarx_client_secret: ${{ secrets.CHECKMARX_CLIENT_SECRET }}
+        github_token: ${{ secrets.CX_GITHUB_TOKEN }}
+        
+    # Upload SARIF report for CodeQL / Security Alerts PRocessing
+    - name: Upload SARIF file
+      uses: github/codeql-action/upload-sarif@v1
+      with:
+        sarif_file: cx.sarif
